@@ -4,9 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 
 // ---
 
-import configuration from './config'
-import { TypeOrmConfigService } from './db'
-import { SolarInstallationModule } from './solar-installation'
+import configuration from './common/config'
+import { TypeOrmConfigService } from './common/db'
+import { ProductModule } from './product/product.module'
+import { ProjectModule } from './project/project.module'
+import { CustomerModule } from './customer/customer.module'
 
 // ---
 
@@ -14,7 +16,9 @@ import { SolarInstallationModule } from './solar-installation'
   imports: [
     ConfigModule.forRoot({ load: [configuration], isGlobal: true }),
     TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
-    SolarInstallationModule
+    CustomerModule,
+    ProductModule,
+    ProjectModule
   ],
   controllers: [],
   providers: []

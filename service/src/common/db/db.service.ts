@@ -4,7 +4,7 @@ import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm'
 
 // ---
 
-import { IPgDBConfig } from 'src/config'
+import { IPgDBConfig } from 'src/common/config'
 
 // ---
 

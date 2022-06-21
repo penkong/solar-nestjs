@@ -7,11 +7,6 @@ services:
   portainer:
     stdin_open: true
 
-  redis:
-    stdin_open: true
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-
   pg:
     restart: always
     stdin_open: true

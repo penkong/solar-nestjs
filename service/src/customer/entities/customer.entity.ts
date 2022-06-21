@@ -1,3 +1,4 @@
+import { Project } from '../../project/entities/project.entity'
 import {
   Entity,
   Column,
@@ -34,4 +35,7 @@ export class Customer {
 
   @UpdateDateColumn({ type: 'timestamp' })
   public updatedAt!: Date
+
+  @OneToMany(() => Project, (project) => project.customer)
+  public projects: Project[]
 }

@@ -14,17 +14,26 @@ export class Product {
   @PrimaryGeneratedColumn()
   public id!: number
 
-  // panel , battery , components
-  @Column({ type: 'varchar', length: 120 , nullable: false, unique: true })
-  public name: string
+  @Column({
+    type: 'enum',
+    enum: ['panel', 'battery', 'component', 'stand'],
+    nullable: false
+  })
+  public component: string
 
-  @Column({ type: 'varchar', length: 120, nullable: false  })
+  @Column({ type: 'varchar', length: 120, nullable: false, unique: true })
+  public model: string
+
+  @Column({ type: 'varchar', length: 120, nullable: false })
   public manufactor: string
+
+  @Column({ type: 'enum', enum: ['bad', 'normal', 'good', 'best', 'used'] })
+  public quality: string
 
   @Column({ type: 'varchar', length: 120 })
   public box_size: string
 
-  @Column({ type: 'float'}) 
+  @Column({ type: 'float' })
   public length: string
 
   @Column({ type: 'float' })

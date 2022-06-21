@@ -33,7 +33,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       migrationsTableName: 'typeorm_migrations',
       logger: 'file',
       autoLoadEntities: true,
-      synchronize: env === 'development'
+      synchronize: env === 'development',
     }
   }
 }

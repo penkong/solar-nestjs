@@ -5,11 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 // ---
 
 import configuration from './common/config'
-import { TypeOrmConfigService } from './common/db'
+import { TypeOrmConfigService } from './common/typeorm'
 import { ProductModule } from './product/product.module'
 import { ProjectModule } from './project/project.module'
 import { CustomerModule } from './customer/customer.module'
-import { OrderToManufactorModule } from './order-to-manufactor/order-to-manufactor.module';
+import { OrderToManufactorModule } from './order-to-manufactor/order-to-manufactor.module'
 
 // ---
 

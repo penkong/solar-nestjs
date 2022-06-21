@@ -31,22 +31,20 @@ services:
     # ports: 
     #   - 8005:80
 
-  apiauth:
+  api:
     build: 
-      dockerfile: Dockerfile.dev
+      dockerfile: ../Dockerfile
     stdin_open: true
     volumes: 
       - /app/node_modules 
-      - ../app/services/auth:/app
+      - ../:/app
     environment:
-      - PORT=5002
+      - PORT=5000
       - DBURL=pg
-      - DBNAME=vanillanodepg
+      - DBNAME=solarpg
       - NODE_ENV=development
       - PGPASS=secret
       - PGUSER=root
       - CORS=http://localhost:3000
-      - JWT_KEY=yhgewy5ehuyrhbe56y
-      - JWT_TTL=365d
     ports: 
-      - 5002:5002
+      - 5000:5000

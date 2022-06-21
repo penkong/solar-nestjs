@@ -34,7 +34,7 @@ apiauth:
   environment:
     - PORT=${}
     - DBURL=${}
-    - DBNAME=vanillanodepg
+    - DBNAME=solarpg
     - NODE_ENV=production
     - PGPASS=${}
     - PGUSER=${}

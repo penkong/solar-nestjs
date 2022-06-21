@@ -12,13 +12,10 @@ import { UpdateSolarInstallationDto } from './dto/update-solar-installation.dto'
 
 @Injectable()
 export class SolarInstallationService {
-  /**
-   *
-   */
-  constructor(
-    @InjectRepository(SolarInstallation)
-    private solarRepository: Repository<SolarInstallation>
-  ) {}
+  // constructor(
+  //   @InjectRepository(SolarInstallation)
+  //   private solarRepository: Repository<SolarInstallation>
+  // ) {}
 
   create(createSolarInstallationDto: CreateSolarInstallationDto) {
     return 'This action adds a new solarInstallation'

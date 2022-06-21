@@ -12,17 +12,17 @@ import { SolarInstallationModule } from './solar-installation/'
 @Module({
   imports: [
     ConfigModule.forRoot({ load: [configuration], isGlobal: true }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
-      // entities: [SolarInstallation],
-      autoLoadEntities: true,
-      synchronize: true
-    }),
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: 'localhost',
+    //   port: 3306,
+    //   username: 'root',
+    //   password: 'root',
+    //   database: 'test',
+    //   // entities: [SolarInstallation],
+    //   autoLoadEntities: true,
+    //   synchronize: true
+    // }),
     SolarInstallationModule
   ],
   controllers: [],

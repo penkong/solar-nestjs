@@ -7,6 +7,26 @@ services:
   portainer:
     stdin_open: true
 
+  elasticsearch:
+    stdin_open: true
+    restart: always
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD: changeme
+      # Use single node discovery in order to disable production mode and avoid bootstrap checks.
+      # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+      discovery.type: single-node
+
+  logstash:
+    stdin_open: true
+    restart: always
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+
+  kibana:
+    stdin_open: true
+    restart: always
+
   pg:
     restart: always
     stdin_open: true

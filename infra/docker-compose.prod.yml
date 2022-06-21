@@ -33,7 +33,7 @@ services:
       - NODE_ENV=production
       - PGPASS=${}
       - PGUSER=${}
-      - CORS=http://${}:3000
+      - CORS=http://${}
       - JWT_KEY=${}
       - JWT_TTL=${}
     ports: 

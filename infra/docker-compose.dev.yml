@@ -15,16 +15,16 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=secret
       - PGPORT=5432
-    # ports: 
-    #   - 5432:5432
+    ports: 
+      - 5432:5432
 
   pgadmin:
     stdin_open: true
     environment: 
       - PGADMIN_DEFAULT_EMAIL=nazemi.works@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=secret
-    # ports: 
-    #   - 8005:80
+    ports: 
+      - 80:80
 
   api:
     build: 
@@ -41,5 +41,5 @@ services:
       - PGPASS=secret
       - PGUSER=root
       - CORS=http://localhost:5000
-    ports: 
-      - 5000:5000
+    # ports: 
+    #   - 5000:5000

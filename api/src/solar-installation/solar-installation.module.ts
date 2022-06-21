@@ -10,7 +10,7 @@ import { SolarInstallationController } from './solar-installation.controller'
 // ---
 
 @Module({
-  // imports: [TypeOrmModule.forFeature([SolarInstallation])],
+  imports: [TypeOrmModule.forFeature([SolarInstallation])],
   controllers: [SolarInstallationController],
   providers: [SolarInstallationService]
 })

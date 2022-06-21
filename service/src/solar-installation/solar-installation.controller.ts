@@ -3,7 +3,7 @@ import { SolarInstallationService } from './solar-installation.service';
 import { CreateSolarInstallationDto } from './dto/create-solar-installation.dto';
 import { UpdateSolarInstallationDto } from './dto/update-solar-installation.dto';
 
-@Controller('solar-installation')
+@Controller('v1/api/solar-installation')
 export class SolarInstallationController {
   constructor(private readonly solarInstallationService: SolarInstallationService) {}
 

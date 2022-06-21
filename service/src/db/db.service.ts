@@ -21,8 +21,6 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
 
     const env = this.config.get('ENV')
 
-    console.log(this.config.get('DATABASE'))
-
     return {
       type,
       host,

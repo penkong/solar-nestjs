@@ -5,8 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 // ---
 
 import configuration from './config'
-import { TypeOrmConfigService } from './db/'
-import { SolarInstallationModule } from './solar-installation/'
+import { TypeOrmConfigService } from './db'
+import { SolarInstallationModule } from './solar-installation'
 
 // ---
 

@@ -37,7 +37,7 @@ services:
 
   api:
     build: 
-      context: ../api
+      context: ../service
     restart: always
     depends_on:
       - pg

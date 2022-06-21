@@ -25,7 +25,7 @@ services:
     #   - 8005:80
 
   api:
-    image: penkong/vanillanodepg
+    image: penkong/solarnest
     environment:
       - PORT=${}
       - DBURL=${}

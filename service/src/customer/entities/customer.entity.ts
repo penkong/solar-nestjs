@@ -24,18 +24,18 @@ export class Customer {
   @Column({ type: 'varchar', length: 120, nullable: false, unique: true })
   public email: string
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text' , nullable: true })
   public address: string
 
   @Column({ type: 'boolean', default: false })
   public is_deleted: boolean
 
-  @CreateDateColumn({ type: 'timestamp', nullable: false })
+  @CreateDateColumn({ type: 'timestamp' })
   public createdAt!: Date
 
   @UpdateDateColumn({ type: 'timestamp' })
   public updatedAt!: Date
 
-  @OneToMany(() => Project, (project) => project.customer)
+  @OneToMany(() => Project, (project) => project.customer , { nullable: true })
   public projects: Project[]
 }

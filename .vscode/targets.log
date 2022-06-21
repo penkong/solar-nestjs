@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun 21 09:07:55 2022
+# Make data base, printed on Tue Jun 21 18:07:06 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-446de1fb-d287-46d5-a5e4-9822f4cff8b6.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-aad1576c-17cf-4cb8-91d3-a38aff429e7e.sock
 # environment
 LC_NAME = de_DE.UTF-8
 # environment
@@ -277,6 +277,7 @@ LC_IDENTIFICATION = de_DE.UTF-8
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
+ 
 # Load=132/1024=13%, Rehash=0, Collisions=13/162=8%
 
 # Pattern-specific Variable Values
@@ -285,9 +286,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66309, inode 4199705): 22 files, no impossibilities.
+# . (device 66309, inode 4199705): 8 files, no impossibilities.
 
-# 22 files, no impossibilities in 1 directories.
+# 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -299,15 +300,22 @@ exec:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 5):
+#  recipe to execute (from 'Makefile', line 8):
 	docker exec -it ${t} bash
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-21 09:00:06.886902023
+#  Last modified 2022-06-21 09:20:04.399142993
 #  File has been updated.
 #  Successfully updated.
+
+buildapi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 5):
+	docker build -t penkong/solarapi ./api
 
 # Not a target:
 .DEFAULT:
@@ -319,7 +327,6 @@ Makefile:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
- 
 #  File does not exist.
 #  File has not been updated.
 
@@ -331,19 +338,19 @@ composebuild:
 	docker-compose -f infra/docker-compose.yml -f infra/docker-compose.dev.yml up --build
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/16=0%
+# Load=7/1024=1%, Rehash=0, Collisions=0/17=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 29 / storage = 287 B / avg = 9 B
-# current buf: size = 8162 B / used = 287 B / count = 29 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 131 B / avg = 8 B
+# current buf: size = 8162 B / used = 131 B / count = 16 / avg = 8 B
 
-# strcache performance: lookups = 35 / hit rate = 17%
+# strcache performance: lookups = 23 / hit rate = 30%
 # hash-table stats:
-# Load=29/8192=0%, Rehash=0, Collisions=0/35=0%
-# Finished Make data base on Tue Jun 21 09:07:55 2022
+# Load=16/8192=0%, Rehash=0, Collisions=0/23=0%
+# Finished Make data base on Tue Jun 21 18:07:06 2022
 
  

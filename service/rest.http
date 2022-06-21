@@ -1,0 +1,28 @@
+POST http://localhost/v1/api/customer HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "mazdak",
+    "last_name": "nazemi",
+    "email": "nazemi.works@gmail.com"
+}
+
+###
+GET http://localhost/v1/api/customer HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost/v1/api/customer/2 HTTP/1.1
+content-type: application/json
+
+###
+PATCH  http://localhost/v1/api/customer/2 HTTP/1.1
+content-type: application/json
+
+{
+    "last_name": "nazemi"
+}
+
+###
+DELETE  http://localhost/v1/api/customer/9 HTTP/1.1
+content-type: application/json

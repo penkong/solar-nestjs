@@ -9,6 +9,7 @@ import { TypeOrmConfigService } from './common/db'
 import { ProductModule } from './product/product.module'
 import { ProjectModule } from './project/project.module'
 import { CustomerModule } from './customer/customer.module'
+import { OrderToManufactorModule } from './order-to-manufactor/order-to-manufactor.module';
 
 // ---
 
@@ -18,7 +19,8 @@ import { CustomerModule } from './customer/customer.module'
     TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
     CustomerModule,
     ProductModule,
-    ProjectModule
+    ProjectModule,
+    OrderToManufactorModule
   ],
   controllers: [],
   providers: []

@@ -1,28 +1,37 @@
-export class Customer {}
-
-
-import { Entity, Column, PrimaryGeneratedColumn , OneToMany } from 'typeorm';
-// import { Photo } from '../photos/photo.entity';
+import {
+  Entity,
+  Column,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
+  PrimaryGeneratedColumn
+} from 'typeorm'
 
 // ---
 
-// @Entity()
-// export class SolarInstallation {
-//   @PrimaryGeneratedColumn()
-//   id: number;
+@Entity()
+export class Customer {
+  @PrimaryGeneratedColumn()
+  public id!: number
 
-//   @Column()
-//   firstName: string;
+  @Column({ type: 'varchar', length: 120, nullable: false })
+  public first_name: string
 
-//   @Column()
-//   lastName: string;
+  @Column({ type: 'varchar', length: 120, nullable: false })
+  public last_name: string
 
-//   @Column({ default: true })
-//   isActive: boolean;
+  @Column({ type: 'varchar', length: 120, nullable: false, unique: true })
+  public email: string
 
-//   // @OneToMany(type => Photo, photo => photo.user)
-//   // photos: Photo[];
-// }
+  @Column({ type: 'text' })
+  public address: string
 
+  @Column({ type: 'boolean', default: false })
+  public is_deleted: boolean
 
+  @CreateDateColumn({ type: 'timestamp', nullable: false })
+  public createdAt!: Date
 
+  @UpdateDateColumn({ type: 'timestamp' })
+  public updatedAt!: Date
+}

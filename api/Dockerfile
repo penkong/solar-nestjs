@@ -1,16 +1,6 @@
-FROM node:15.13.0-alpine
+FROM node:16-alpine3.15
 
-
-ENV PORT=5000
-ENV DBURL=postgresql://<PGUSER>:<PGPASS>@localhost:5432/<DBNAME>?sslmode=disable
-ENV DBNAME=devrefvanillanodesql
-ENV NODE_ENV=development
-ENV PGPASS=root
-ENV PGUSER=secret
-ENV CORS=http://localhost:3000
-ENV JWT_KEY=uy6hw65hywtrnbewhnterwhg
-ENV JWT_TTL=365d
-
+RUN apk add --no-cache bash tini curl
 
 RUN mkdir -p /app
 WORKDIR "/app"
@@ -19,14 +9,35 @@ WORKDIR "/app"
 COPY package*.json ./
 
 
-
+RUN chown -R node:node .
+USER node
 RUN npm config set unsafe-perm true
 # we use npm ci here so only the package-lock.json file is used
 RUN npm config list \
     && npm ci \
     && npm cache clean --force
 
+COPY --chown=node:node . .
+
 COPY . .
 EXPOSE 5000
 
+# entrypoint frist run and wrap cmd
+# tini run as main process and if we SIGINT or SIGTERM
+# it will remove node process as zombie process .
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["npm", "run", "dev"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+

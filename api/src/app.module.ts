@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 // ---
 
 import configuration from './config'
+import { TypeOrmConfigService } from './db/'
 import { SolarInstallationModule } from './solar-installation/'
 
 // ---
@@ -12,17 +13,7 @@ import { SolarInstallationModule } from './solar-installation/'
 @Module({
   imports: [
     ConfigModule.forRoot({ load: [configuration], isGlobal: true }),
-    // TypeOrmModule.forRoot({
-    //   type: 'mysql',
-    //   host: 'localhost',
-    //   port: 3306,
-    //   username: 'root',
-    //   password: 'root',
-    //   database: 'test',
-    //   // entities: [SolarInstallation],
-    //   autoLoadEntities: true,
-    //   synchronize: true
-    // }),
+    TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
     SolarInstallationModule
   ],
   controllers: [],

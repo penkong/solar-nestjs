@@ -4,9 +4,10 @@ import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
-
 async function bootstrap() {
-  const app: NestExpressApplication = await NestFactory.create(AppModule);
+  const app: NestExpressApplication = await NestFactory.create(AppModule , {
+    logger: ['error', 'warn'],
+  });
   const config: ConfigService = app.get(ConfigService);
   const port: number = config.get<number>('PORT');
 

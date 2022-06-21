@@ -18,15 +18,15 @@ export class OrderToManufactor {
   @PrimaryGeneratedColumn()
   public id!: number
 
-  @ManyToOne(() => Customer, (Product) => Product.id, { nullable: false })
+  @Column({ type: 'varchar', length: 120, nullable: false })
   public customer: string
 
-  @ManyToOne(() => Product, (Product) => Product.id, { nullable: false })
+  @Column({ type: 'varchar', length: 120, nullable: false })
   public product: string
 
-  @ManyToOne(() => Project, (p) => p.id)
+  @Column({ type: 'varchar', length: 120, nullable: false })
   public project: string
-
+  
   @Column({
     type: 'enum',
     enum: ['waiting', 'success', 'failed'],

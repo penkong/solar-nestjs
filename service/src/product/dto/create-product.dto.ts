@@ -6,8 +6,16 @@ export class CreateProductDto {
 
   @IsString()
   @IsNotEmpty()
-  public name: string
+  public component: string
 
-  @IsEmail()
-  public email: string
+  @IsString()
+  @IsNotEmpty()
+  public model: string
+
+  @IsString()
+  @IsNotEmpty()
+  public manufactor: string
+
+
+
 }

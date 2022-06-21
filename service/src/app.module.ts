@@ -20,7 +20,7 @@ import { OrderToManufactorModule } from './order-to-manufactor/order-to-manufact
     CustomerModule,
     ProductModule,
     ProjectModule,
-    OrderToManufactorModule
+    OrderToManufactorModule,
   ],
   controllers: [],
   providers: []

@@ -23,30 +23,31 @@ export class Project {
   @Column({ type: 'varchar', length: 120, nullable: false })
   public name: string
 
-  @ManyToOne(() => Customer, (customer) => customer.projects)
+  @ManyToOne(() => Customer, (customer) => customer.projects, { nullable : false})
   public customer: string
 
-  @Column({ type: 'float' })
+  @Column({ type: 'float' , nullable: true })
   public lng: number
 
-  @Column({ type: 'float' })
+  @Column({ type: 'float' , nullable : true })
   public lat: number
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text' , nullable: true})
   public description: string
 
   @Column({
-    type: 'jsonb',
-    nullable: false
+    type: 'varchar',
+    nullable: true
   })
-  public components_list: { [key: Product['id']]: number }
+  public components_list: string
 
-  @Column({ type: 'timestamp' , nullable: false})
-  public construction_date : Date
+  @Column({ type: 'varchar' , nullable: false})
+  public construction_date : string
 
   @Column({
     type: 'enum',
     enum: ['requested', 'in-progress', 'in-active', 'finished'],
+    default : 'requested',
     nullable: false
   })
   public status: string

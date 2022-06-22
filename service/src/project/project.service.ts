@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm'
-import { Injectable, Logger } from '@nestjs/common'
+import { BadRequestException, Injectable, Logger } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 
 // ---
@@ -7,8 +7,13 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { Project } from './entities/project.entity'
 import { CreateProjectDto } from './dto/create-project.dto'
 import { UpdateProjectDto } from './dto/update-project.dto'
+import { plainToClass } from 'class-transformer'
 
 // ---
+
+class ItemJ {
+  [key: string ] : number
+}
 
 @Injectable()
 export class ProjectService {
@@ -19,23 +24,64 @@ export class ProjectService {
     private projectRepository: Repository<Project>
   ) {}
 
-  create(createProjectDto: CreateProjectDto) {
-    return 'This action adds a new project'
+  async create(createProjectDto: CreateProjectDto) {
+    // transactional
+    try {
+      return this.projectRepository.manager.transaction(async (trsM) => {
+        // send requests to manufactor to book items
+
+        // const product = trsM.getTreeRepository('product')
+        // product.save({
+        //   component: 'battery',
+        //   model: 'x-s267-LES',
+        //   manufactor: 'samsung'
+        // })
+        // await trsM.save()
+
+        const existingProject = await trsM.findOne<Project>('Project', {
+          where: {
+            name: createProjectDto.name,
+            construction_date: createProjectDto.construction_date
+          }
+        })
+
+        if (existingProject) {
+          throw new Error('Project already exists')
+        } else {
+          const project = trsM.create('Project', createProjectDto)
+          return await trsM.save(project)
+        }
+      })
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
-  findAll() {
-    return `This action returns all project`
+  async findAll() {
+    return await this.projectRepository.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} project`
+  async findOne(id: number) {
+    return await this.projectRepository.findOne({ where: { id } })
   }
 
-  update(id: number, updateProjectDto: UpdateProjectDto) {
-    return `This action updates a #${id} project`
+  async update(id: number, updateProjectDto: UpdateProjectDto) {
+    try {
+      // input checking ...
+      const project = await this.findOne(id)
+
+      if (!project.id) throw new Error('Customer not found')
+      // input checking ...
+      return await this.projectRepository.save({
+        ...project,
+        ...updateProjectDto
+      })
+    } catch (error) {
+      throw error.detail
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} project`
+  async remove(id: number) {
+    return await this.projectRepository.delete(id)
   }
 }

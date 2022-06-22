@@ -48,3 +48,29 @@ content-type: application/json
 
 ###
 DELETE  http://localhost/v1/api/product/19 HTTP/1.1
+
+###
+POST http://localhost/v1/api/project HTTP/1.1
+content-type: application/json
+
+{
+    "name" : "big project11",
+    "customer" : "2",
+    "construction_date" : "17.11.2023",
+    "components_list": "[[14,05],[15,13],[17,13]]",
+    "status" : "requested"
+}
+
+###
+GET http://localhost/v1/api/project HTTP/1.1
+
+###
+PATCH http://localhost/v1/api/project/21 HTTP/1.1
+content-type: application/json
+
+{
+    "components_list": "[[14,05],[15,13],[17,15]]"
+}
+
+###
+DELETE  http://localhost/v1/api/project/12 HTTP/1.1

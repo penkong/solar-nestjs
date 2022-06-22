@@ -26,7 +26,6 @@ export class CustomerService {
         where: { email: createCustomerDto.email }
       })
 
-      console.log(existingCustomer)
 
       if (existingCustomer.length > 0) {
         if (existingCustomer[0].is_deleted) {

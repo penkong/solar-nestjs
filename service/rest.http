@@ -9,20 +9,42 @@ content-type: application/json
 
 ###
 GET http://localhost/v1/api/customer HTTP/1.1
-content-type: application/json
 
 ###
 GET http://localhost/v1/api/customer/2 HTTP/1.1
-content-type: application/json
 
 ###
 PATCH  http://localhost/v1/api/customer/2 HTTP/1.1
 content-type: application/json
 
 {
-    "last_name": "nazemi"
+    "last_name": "nazemiiii"
 }
 
 ###
-DELETE  http://localhost/v1/api/customer/9 HTTP/1.1
+DELETE  http://localhost/v1/api/customer/2 HTTP/1.1
 content-type: application/json
+
+###
+POST http://localhost/v1/api/product HTTP/1.1
+content-type: application/json
+
+{
+    "component" : "battery",
+    "model" : "x-s267-LE",
+    "manufactor" : "samsung"
+}
+
+###
+GET http://localhost/v1/api/product HTTP/1.1
+
+###
+PATCH http://localhost/v1/api/product/19 HTTP/1.1
+content-type: application/json
+
+{
+    "model" : "x-s267-LS"
+}
+
+###
+DELETE  http://localhost/v1/api/product/19 HTTP/1.1

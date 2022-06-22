@@ -21,6 +21,18 @@ export class ProductService {
 
   async create(createProductDto: CreateProductDto): Promise<Product> {
     try {
+      const existingProduct = await this.productRepository.find({
+        where: {
+          component: createProductDto.component,
+          model: createProductDto.model,
+          manufactor: createProductDto.manufactor
+        }
+      })
+
+      if (existingProduct.length > 0) {
+        throw new Error('Product already exists')
+      }
+
       const product = this.productRepository.create(createProductDto)
       return await this.productRepository.save(product)
     } catch (error) {
@@ -48,10 +60,13 @@ export class ProductService {
     try {
       const product = await this.findOne(id)
       if (!product.id) throw new Error('Product not found')
-      return await this.productRepository.save({
+      const item = {
         ...product,
         ...updateProductDto
-      })
+      }
+
+      console.log(item)
+      return await this.productRepository.save(item)
     } catch (error) {
       throw error
     }

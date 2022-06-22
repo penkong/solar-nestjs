@@ -39,7 +39,7 @@ export class Product {
   public width!: string
 
   @Column({ type: 'float' , nullable: true})
-  public height!: boolean
+  public height!: string
 
   @Column({ type: 'text', nullable: true })
   public description!: string

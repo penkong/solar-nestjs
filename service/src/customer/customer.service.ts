@@ -26,8 +26,13 @@ export class CustomerService {
         where: { email: createCustomerDto.email }
       })
 
+      console.log(existingCustomer)
+
       if (existingCustomer.length > 0) {
-        throw new Error('Customer already exists')
+        if (existingCustomer[0].is_deleted) {
+          existingCustomer[0].is_deleted = false
+          return await this.customerRepository.save(existingCustomer[0])
+        } else throw new Error('Customer already exists')
       }
       const customer = this.customerRepository.create(createCustomerDto)
       return await this.customerRepository.save(customer)
@@ -38,7 +43,9 @@ export class CustomerService {
 
   async findAll(): Promise<Customer[]> {
     try {
-      return await this.customerRepository.find({ where : { is_deleted: false } })
+      return await this.customerRepository.find({
+        where: { is_deleted: false }
+      })
     } catch (error) {
       throw error.detail
     }

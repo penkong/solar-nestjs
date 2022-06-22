@@ -1,7 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ProductService } from './product.service';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
+import {
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Controller,
+} from '@nestjs/common'
+
+// ---
+
+import { ProductService } from './product.service'
+import { CreateProductDto } from './dto/create-product.dto'
+import { UpdateProductDto } from './dto/update-product.dto'
+
+// ---
 
 @Controller('v1/api/product')
 export class ProductController {
@@ -9,27 +22,48 @@ export class ProductController {
 
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
-    return this.productService.create(createProductDto);
+    try {
+      return this.productService.create(createProductDto)
+    } catch (error) {
+      throw error
+    }
   }
 
   @Get()
   findAll() {
-    return this.productService.findAll();
+    try {
+      return this.productService.findAll()
+    } catch (error) {
+      throw error
+    }
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.productService.findOne(+id);
+    try {
+      return this.productService.findOne(+id)
+      
+    } catch (error) {
+      throw error
+    }
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productService.update(+id, updateProductDto);
+    try {
+      return this.productService.update(+id, updateProductDto)
+      
+    } catch (error) {
+      throw error
+    }
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.productService.remove(+id);
+    try {
+      return this.productService.remove(+id)
+    } catch (error) {
+      throw error
+    }
   }
-
 }

@@ -1,14 +1,17 @@
-import { Customer } from '../../customer/entities/customer.entity'
-import { Product } from '../../product/entities/product.entity'
 import {
   Entity,
   Column,
   OneToMany,
+  ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryGeneratedColumn,
-  ManyToOne
 } from 'typeorm'
+
+// ---
+
+import { Customer } from '../../customer/entities/customer.entity'
+import { Product } from '../../product/entities/product.entity'
 
 // ---
 
@@ -37,6 +40,9 @@ export class Project {
     nullable: false
   })
   public components_list: { [key: Product['id']]: number }
+
+  @Column({ type: 'timestamp' , nullable: false})
+  public construction_date : Date
 
   @Column({
     type: 'enum',
